@@ -85,19 +85,16 @@
 
 <!-- Page-related JS -->
 <script type="text/javascript">
-    let liAbout = $(".nav-item #about");
-    let liPortfolio = $(".nav-item #portfolio");
-    let liContact = $(".nav-item #contact");
 
     let divAbout = $("#div-about");
     let divPortfolio = $("#div-portfolio");
     let divContact = $("#div-contact");
 
-/* Function toggles display for each div */
+// Function adds .d-none to all of the content div's
 function dNoneAll() {
+            divAbout.addClass("d-none");
             divPortfolio.addClass("d-none");
             divContact.addClass("d-none");
-
 };
 
 $(document).ready(function() {
@@ -109,6 +106,8 @@ $(document).ready(function() {
         let navClicked = $(this).parent("li");
         navClicked.addClass("active");
         whatLink = navClicked.attr("id");
+        console.log(whatLink);
+        // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
         dNoneAll();
         switch (whatLink) {
             case "about":
@@ -118,9 +117,9 @@ $(document).ready(function() {
                 divPortfolio.removeClass("d-none");
                 break;
             case "contact":
-                divContact = $("#div-contact");
+                divContact.removeClass("d-none");
                 break;
-        }
+        };
     });
 
 });
